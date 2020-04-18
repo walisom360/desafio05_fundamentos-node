@@ -29,7 +29,7 @@ class TransactionsRepository {
   }
 
   public getBalance(): Balance {
-    const balanceMap = this.transactions.reduce(
+    const balanceAllTransactions = this.transactions.reduce(
       (accumulator, current) => {
         return {
           income:
@@ -46,8 +46,8 @@ class TransactionsRepository {
     );
 
     const balance = {
-      ...balanceMap,
-      total: balanceMap.income - balanceMap.outcome,
+      ...balanceAllTransactions,
+      total: balanceAllTransactions.income - balanceAllTransactions.outcome,
     };
 
     this.balance = balance;
